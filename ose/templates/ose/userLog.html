@@ -1,0 +1,59 @@
+{% extends 'ose/main.html' %}
+{% load static %}
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="Description" content="Enter your description here"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+<title>Login</title>
+</head>
+<body class="userlog">
+    <h1>Log in</h1>
+    <section class="container">
+        <div class="row">
+            <div class="col-6">
+                <form name="std-reg" method="post" novalidate>
+                    {% csrf_token %}
+                        {% for fm in frm %}
+                        <div class="form-group">
+                            {{ fm.label_tag }}
+                            {{ fm }}
+                            <span class="text-danger">{{ fm.errors|striptags }}</span>
+                        </div>
+                        {% endfor %}
+
+                    <input type="submit" value="Login" class="btn btn-info">
+                </form>
+                {% if frm.non_field_errors %}
+                    {% for err in frm.non_field_errors %}
+                        <div class="alert alert-danger">
+                            {{ err }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+                {% if messages %}
+                    {% for msg in messages %}
+                        <div class="alert alert-success">
+                            {{ msg }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            New user?<a href="{% url 'usr-reg-page' %}">Click here</a><br>
+            Change Password?<a href="{% url 'usr-chang-pass-page' %}">Click here</a>
+            </div>
+        </div>
+    </section>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
+</body>
+</html>
+
+{% endblock content %}

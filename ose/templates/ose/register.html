@@ -1,0 +1,34 @@
+{% extends 'ose/main.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+    <title>Sign Up</title>
+</head>
+<body bgcolor="#330708">
+    <div class="form-signup">
+        <form method="POST" action="register" >
+            {% csrf_token %}
+
+            <h2>REGISTER ACCOUNT</h2>
+            <input type="text" name="first_name" placeholder="Enter First Name">
+            <input type="text" name="last_name" placeholder="Enter Last Name">
+            <input type="text" name="username" placeholder="Enter User Name">
+            <input type="email" name="email" placeholder="Enter Email Here">
+            <input type="password" name="password" placeholder="Enter Password Here">
+            <input type="password" name="password" placeholder="Enter Confirm Password">
+
+            <input type="submit" value="Save" class="btn btn-info">
+
+        </form>
+        <p class="link">Alrady Have An Account <br>
+        <a href="{% url 'userlogin'%}">Login </a> Here</a></p>
+
+    </div>
+</body>
+</html>
+
+{% endblock content %}

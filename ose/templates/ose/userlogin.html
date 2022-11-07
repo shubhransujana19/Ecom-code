@@ -1,0 +1,28 @@
+{% extends 'ose/main.html' %}
+{% load static %}
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+    <title>USERLOGIN</title>
+</head>
+<body bgcolor="#330708"> 
+    <div class="image">
+    <div class="form-login">
+        <h2>LOGIN</h2>
+        <input type="email" name="Email" placeholder="Enter Email Here">
+        <input type="password" name="" placeholder="Enter Password Here">
+        <button class="btn1"><a href="#">Login</a></button>
+
+        <p class="link">Don't Have An Account <br>
+        <a href="{%url 'usr-reg-page' %}">Sign Up </a> Here</a></p>
+
+    </div>
+    </div>
+</body>
+</html>
+
+{% endblock content%}
